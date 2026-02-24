@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emerjane Daliri | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    color:white;
+    background:url('./images/gradpic.webp') no-repeat center center/cover;
+    position:relative;
+}
+
+/* DARK OVERLAY */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(10,40,70,0.75);
+    backdrop-filter:blur(8px);
+    z-index:-1;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    z-index:1000;
+}
+
+nav h2{
+    font-weight:600;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:400;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#90c2ff;
+}
+
+.hamburger{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+    color:white;
+}
+
+/* SECTION */
+section{
+    padding:140px 8% 100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:32px;
+    font-weight:600;
+}
+
+/* HERO */
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:100vh;
+}
+
+.hero img{
+    width:260px;
+    border-radius:50%;
+    border:3px solid rgba(255,255,255,0.4);
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+.hero-text{
+    max-width:600px;
+}
+
+.hero-text h1{
+    font-size:44px;
+    margin-bottom:15px;
+}
+
+.hero-text p{
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+/* GLASS CARD */
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:30px;
+    border-radius:20px;
+    margin-bottom:30px;
+    transition:0.4s ease;
+    opacity:0;
+    transform:translateY(40px);
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,0.15);
+}
+
+.card h3{
+    margin-bottom:12px;
+    font-weight:600;
+}
+
+.card ul{
+    list-style-type: disc;
+    padding-left:20px;
+    line-height:1.7;
+    margin-bottom:0;
+}
+
+.card ul li span.label{
+    font-weight:600;
+    display:inline-block;
+    width:160px;
+}
+
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border-top:1px solid rgba(255,255,255,0.2);
+}
+
+/* LAPTOP */
+@media (max-width:1200px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding-top:120px;
+    }
+    .hero img{
+        width:220px;
+        margin-bottom:20px;
+    }
+    .hero-text h1{
+        font-size:36px;
+    }
+    section{
+        padding:120px 6% 80px 6%;
+    }
+}
+
+/* TABLET */
+@media (max-width:900px){
+    .hamburger{
+        display:block;
+    }
+
+    nav ul{
+        flex-direction:column;
+        width:100%;
+        max-height:0;
+        overflow:hidden;
+        transition:max-height 0.4s ease;
+        margin-top:10px;
+        background:rgba(255,255,255,0.05);
+        border-radius:10px;
+        z-index:1001;
+    }
+
+    nav ul.show{
+        max-height:1000px;
+    }
+
+    nav ul li{
+        text-align:center;
+        padding:12px 0;
+    }
+
+    .hero img{
+        width:200px;
+    }
+
+    .hero-text h1{
+        font-size:32px;
+    }
+
+    .hero-text p{
+        font-size:16px;
+    }
+
+    .card{
+        padding:25px;
+    }
+}
+
+/* PHONE */
+@media (max-width:768px){
+
+    /* Move hamburger to right corner */
+    .hamburger{
+        position:absolute;
+        right:5px;
+        top:50%;
+        transform:translateY(-50%);
+    }
+
+    .hero img{
+        width:160px;
+    }
+
+    .hero-text h1{
+        font-size:28px;
+    }
+
+    .hero-text p{
+        font-size:14px;
+    }
+
+    .section-title h2{
+        font-size:28px;
+    }
+
+    .skills-grid{
+        gap:15px;
+    }
+
+    .card ul li span.label{
+        width:120px;
+    }
+
+    /* Fix Experience scroll position */
+    #experience{
+        scroll-margin-top:120px;
+    }
+}
+
+/* SMALL PHONE */
+@media (max-width:480px){
+
+    .hero img{
+        width:200px;
+        height: 200PX;
+    }
+
+    .hero-text h1{
+        font-size:24px;
+    }
+
+    .hero-text p{
+        font-size:13px;
+    }
+
+    .section-title h2{
+        font-size:24px;
+    }
+
+    .card ul li span.label{
+        width:100px;
+    }
+
+    .skills-grid{
+        gap:10px;
+    }
+
+    #experience{
+        scroll-margin-top:140px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Emerjane </h2>
+    <i class="fa-solid fa-bars hamburger"></i>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#personal-info">Personal Information</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <img src="./images/gradpic.webp" alt="Profile">
+    <div class="hero-text">
+        <h1>Hi, I'm Emerjane Daliri</h1>
+        <p>
+        A detail-oriented IT graduate with strong administrative and data management skills. Experienced in handling records and maintaining confidentiality with professionalism.
+        </p>
+        <p>
+        <i class="fa-solid fa-envelope"></i> ejanedalere@gmail.com <br>
+        <i class="fa-solid fa-phone"></i> 09268643978 <br>
+        <i class="fa-solid fa-location-dot"></i> Gamu, Isabela
+        </p>
+    </div>
+</section>
+
+<section id="personal-info">
+    <div class="section-title"><h2>Personal Information</h2></div>
+    <div class="card">
+        <ul>
+            <li><span class="label">Age:</span> 24 years old</li>
+            <li><span class="label">Date of Birth:</span> September 01, 2001</li>
+            <li><span class="label">Place of Birth:</span> Santiago City, Isabela</li>
+            <li><span class="label">Sex:</span> Female</li>
+            <li><span class="label">Citizenship:</span> Filipino</li>
+            <li><span class="label">Civil Status:</span> Single</li>
+            <li><span class="label">Religion:</span> United Pentecostal Church</li>
+        </ul>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="section-title"><h2>Experience</h2></div>
+    <div class="card">
+        <h3>On-the-Job Trainee – Marketing Department – Dory PH Inc. | 2025 </h3>
+        <ul>
+            <li>Supported data entry and record management for marketing reports.</li>
+            <li>Performed system integration tasks under supervision.</li>
+            <li>Handled approval processes through the Super Admin page.</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h3>Customer Experience Agent (Voice) - Retail Account - Alorica Inc. | 2025</h3>
+        <ul>
+            <li>Maintained client data confidentiality and accuracy.</li>
+            <li>Resolved inquiries and issues efficiently using problem-solving and communication skills.</li>
+            <li>Demonstrated patience, empathy, and professionalism in handling customer concerns.</li>
+            <li>Collaborated with team members and supervisors to improve service quality and meet performance targets.</li>
+        </ul>
+    </div>
+</section>
+
+<section id="education">
+    <div class="section-title"><h2>Education</h2></div>
+    <div class="card">
+        <h3>Bachelor of Science in Information Technology</h3>
+        <p>Isabela State University – Roxas Campus | 2021 – 2025 </p>
+        <p><i class="fa-solid fa-graduation-cap"></i> Cum Laude (Graduation: July 2025)</p>
+        <p><i class="fa-solid fa-medal"></i> 4-Year Dean’s Lister Scholarship Recipient</p>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="section-title"><h2>Skills</h2></div>
+    <div class="skills-grid">
+        <div class="card">
+            <h3><i class="fa-solid fa-lightbulb"></i> Professional Skills</h3>
+            <ul>
+                <li>Knowledgeable in the basics of Microsoft Office applications such as Word, PowerPoint, and Excel.</li>
+                <li>Skilled in data encoding, document filing, and administrative process.</li>
+                <li>Strong communication and customer service abilities.</li>
+                <li>Teachable and can easily adapt.</li>
+                <li>Efficient in handling patient information with confidentiality.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3><i class="fa-solid fa-heart"></i> Personal Skills</h3>
+            <ul>
+                <li>Passionate about doing a job</li>
+                <li>Strong time management skills</li>
+                <li>Great at Teamwork and collaboration</li>
+                <li>Reliable</li>
+                <li>Detail-oriented and thorough in completing tasks</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="certifications">
+    <div class="section-title"><h2>Certifications & Eligibility</h2></div>
+    <div class="card">
+        <h3><i class="fa-solid fa-certificate"></i> Honor Graduate Eligibility (PD 907)</h3>
+        <p>Civil Service Commission (CSC), Region II – Tuguegarao, Cagayan | Issued: 2025</p>
+    </div>
+    <div class="card">
+        <h3><i class="fa-solid fa-award"></i> 2nd Place – Campus Research Colloquium</h3>
+        <p>Technological Category | Isabela State University – Roxas Campus | 2025</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 Emerjane Daliri | Portfolio
+</footer>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const navLinks = document.querySelectorAll('nav ul li a');
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('nav ul');
+
+// Hamburger toggle
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+});
+
+// Scroll reveal for cards
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if(cardTop < triggerBottom){
+            card.classList.add('show');
+        }
+    });
+});
+
+// Smooth scroll with exact center offset
+navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - (window.innerHeight / 2) + (targetEl.offsetHeight / 2);
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+
+        // Close mobile menu after click
+        if(window.innerWidth <= 900 && navMenu.classList.contains('show')){
+            navMenu.classList.remove('show');
+        }
+    });
+});
+
+// Ensure Home section is displayed first on page load
+window.addEventListener('load', () => {
+    const homeSection = document.getElementById('home');
+    if(homeSection){
+        const elementPosition = homeSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - (window.innerHeight / 2) + (homeSection.offsetHeight / 2);
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+});
+</script>
+<script>
+const cards = document.querySelectorAll('.card');
+const navLinks = document.querySelectorAll('nav ul li a');
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('nav ul');
+
+/* Hamburger */
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+});
+
+/* Scroll reveal */
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if(cardTop < triggerBottom){
+            card.classList.add('show');
+        }
+    });
+});
+
+/* ✅ UPDATED SMOOTH SCROLL */
+navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+
+        const targetId = link.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+
+        const navbarHeight = document.querySelector('nav').offsetHeight;
+        const extraOffset = 60; // 🔥 adjust this number if needed
+
+        const offsetPosition = targetEl.offsetTop - navbarHeight - extraOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+
+        if(window.innerWidth <= 900 && navMenu.classList.contains('show')){
+            navMenu.classList.remove('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
